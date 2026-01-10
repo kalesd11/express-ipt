@@ -1,3 +1,5 @@
+const createError = require("http-errors");
+
 function notFound(req, res, next) {
     next(createError(404));
 }
