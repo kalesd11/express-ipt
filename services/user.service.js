@@ -13,7 +13,7 @@ async function createUser(req, res, next) {
     const hash = await bcrypt.hash(body.password, salt);
     const data = await startTransaction(async (connection) => {
         if (!!connection) {
-            const [rows] = connection.execute(
+            const [rows] = await connection.execute(
                 "INSERT into users (username, password) VALUES (?, ?)",
                 [body.username, hash]
             );

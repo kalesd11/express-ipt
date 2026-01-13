@@ -8,6 +8,6 @@ const auth = require("../middleware/auth.middleware");
 router.get("/", auth, userService.getAllUsers);
 
 // POST /users – Create user.
-router.post("/users", userService.createUser);
+router.post("/", userService.createUser);
 
 module.exports = router;
