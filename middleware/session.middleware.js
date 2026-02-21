@@ -1,14 +1,14 @@
 const RedisStore = require("connect-redis").default;
-const redisClient = require("./redis");
+const redisClient = require("../utils/redis.utils");
 const session = require("express-session");
 
 const startSession = () => {
     session({
         store: new RedisStore({
             client: redisClient,
-            prefix: "sess:",
+            prefix: "sess:", // Prefix for session keys in Redis
         }),
-        name: "connect.sid",
+        name: "connect.sid", // Cookie Name
         secret: "mySuperSecretKey",
         resave: false,
         saveUninitialized: false,
